@@ -1,8 +1,7 @@
+from __future__ import annotations
 from dataclasses import dataclass
-from re import Pattern
 import re
-from parsable import Parsable
-from parsable.main import ParsableCollection
+from parsable import Parsable, ParsableCollection
 
 
 EXAMPLE_TEXT = """
@@ -28,6 +27,7 @@ EXAMPLE_TEXT = """
 
 """
 
+
 def test_basics() -> None:
     @dataclass
     class Coordinates(Parsable):
@@ -35,13 +35,15 @@ def test_basics() -> None:
         y: float
 
         @staticmethod
-        def pattern() -> Pattern[str]:
-            return re.compile(r"\"coordinates\":\s*\[\s*(?P<x>\d+(?:\.\d+)?)\,\s*(?P<y>\d+(?:\.\d+)?)\,?\s*\]")
-        
+        def pattern() -> "re.Pattern[str]":
+            return re.compile(
+                r"\"coordinates\":\s*\[\s*(?P<x>\d+(?:\.\d+)?)\,\s*(?P<y>\d+(?:\.\d+)?)\,?\s*\]"
+            )
+
         def __post_init__(self) -> None:
             self.x = float(self.x) if isinstance(self.x, str) else self.x
             self.y = float(self.y) if isinstance(self.y, str) else self.y
-    
+
     coordinates = Coordinates.from_str(EXAMPLE_TEXT)
 
     assert len(coordinates) == 1
@@ -50,9 +52,9 @@ def test_basics() -> None:
 
     class CoordinatesCollection(ParsableCollection[Coordinates]):
         @staticmethod
-        def runtime_type() -> type:
+        def runtime_type() -> "type[Coordinates]":
             return Coordinates
-    
+
     coordinates_alt = CoordinatesCollection.from_str(EXAMPLE_TEXT)
     assert len(coordinates_alt) == 1
     assert coordinates_alt[0].x == 14.95685
