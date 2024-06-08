@@ -13,15 +13,20 @@ if TYPE_CHECKING:
 
 T = TypeVar("T", bound=Parsable)
 
+if sys.version_info < (3, 9):
+    to_inherit = list
+else:
+    to_inherit = list[T]
 
-class ParsableCollection(list["T"]):  # type: ignore[valid-type, name-defined]
+
+class ParsableCollection(to_inherit):  # type: ignore[valid-type, name-defined, type-arg]
     @staticmethod
     @abc.abstractmethod
     def runtime_type() -> "type[T]": ...  # type: ignore[name-defined]
 
     @classmethod
     def from_str(cls, text: "str") -> "Self":
-        return cls(cls.runtime_type().from_str(text))  # type: ignore[abstract]
+        return cls(cls.runtime_type().from_str(text))  # type: ignore[abstract, attr-defined]
 
     @property
     def df(self) -> "pd.DataFrame":

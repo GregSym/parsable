@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass
 import re
+import sys
 from parsable import Parsable, ParsableCollection
 
 
@@ -50,7 +51,12 @@ def test_basics() -> None:
     assert coordinates[0].x == 14.95685
     assert coordinates[0].y == 69.91848
 
-    class CoordinatesCollection(ParsableCollection[Coordinates]):
+    if sys.version_info < (3, 9):
+        to_inherit = ParsableCollection
+    else:
+        to_inherit = ParsableCollection[Coordinates]
+
+    class CoordinatesCollection(to_inherit):
         @staticmethod
         def runtime_type() -> "type[Coordinates]":
             return Coordinates
