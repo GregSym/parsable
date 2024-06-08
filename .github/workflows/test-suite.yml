@@ -1,8 +1,11 @@
 name: regex-pypeline/parsable Test Suite
 
 on:
-  # - push
-  - pull_request
+  pull_request:
+  push:
+    tags:
+      - 'v*'
+  
 
 jobs:
   test:
