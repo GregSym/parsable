@@ -24,7 +24,7 @@ no_implicit_reexport = true
 
 [project]
 name = "regex-pypeline"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
     { name="GregSym", email="gtsrex@gmail.com" },
 ]
@@ -37,6 +37,6 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
-# [project.urls]
-# Homepage = "https://github.com/GregSym/parsable"
-# Issues = "https://github.com/GregSym/parsable/issues"
+[project.urls]
+Homepage = "https://github.com/GregSym/parsable"
+Issues = "https://github.com/GregSym/parsable/issues"
