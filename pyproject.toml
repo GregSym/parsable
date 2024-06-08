@@ -24,7 +24,7 @@ no_implicit_reexport = true
 
 [project]
 name = "regex-pypeline"
-version = "0.0.2"
+version = "0.0.21"
 authors = [
     { name="GregSym", email="gtsrex@gmail.com" },
 ]

@@ -2,6 +2,8 @@
 
 ## utilities for quickly structuring text parsing
 
+![test_suite](https://github.com/GregSym/parsable/actions/workflows/test-suite.yml/badge.svg)
+
 ### intended for situations where full-blown ast parsing is unnecessary
 
 
@@ -28,7 +30,7 @@ EXAMPLE_TEXT = """
 }
 
 """
-
+    
 @dataclass
 class Coordinates(Parsable):
     x: float
