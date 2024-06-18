@@ -2,7 +2,7 @@
 
 ## utilities for quickly structuring text parsing
 
-![test_suite](https://github.com/GregSym/parsable/actions/workflows/test-suite.yml/badge.svg?event=pull)
+![test_suite](https://github.com/GregSym/parsable/actions/workflows/test-suite.yml/badge.svg?event=pull_request)
 
 ### intended for situations where full-blown ast parsing is unnecessary
 
