@@ -53,3 +53,6 @@ which outputs:
 ```
 
 This particular functionality exploits the named capture groups feature in the version of regex used by python (available in many other typical implementations) to structure the desired data into a dataclass output that can be worked with easily for other tasks.
+
+### usage recommendation / disclaimer
+I should note, as I have done elsewhere, that despite the example using JSON (which was a quick and clear way of demonstrating parsing) the intended target is niche, loosely structed data for which one doesn't necessarily want to reach for a full AST parsing tool. JSON is not a recommended application - JSON itself will usually have a dedicated tool, but this also applies to any structured format which one would not typically parse with regex. A better example may be a body of text containing some emails one might like to auto-parse into a structured collection.
